@@ -1,0 +1,4 @@
+#!/bin/bash
+cd ../
+rm -rf Bare-Bones
+git clone https://github.com/gilesjohn/Bare-Bones.git
