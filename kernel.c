@@ -126,7 +126,7 @@ extern "C" /* Use C linkage for kernel_main. */
 void kernel_main(void) {
 	/* Initialize terminal interface */
 	terminal_initialize();
-	char* out_string = "Test: 4";
+	char* out_string = "Test: 4\n";
  
 	/* Newline support is left as an exercise. */
 	for (int i = 0; i < 100; ++i) {
