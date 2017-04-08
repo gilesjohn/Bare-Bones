@@ -107,6 +107,7 @@ void terminal_putchar(char c) {
 	if (++terminal_column == VGA_WIDTH) {
 		terminal_column = 0;
 		if (++terminal_row == VGA_HEIGHT)
+			terminal_row = VGA_HEIGHT-1;
 			terminal_scroll_up();
 	}
 }
@@ -130,10 +131,14 @@ void kernel_main(void) {
  
 	/* Newline support is left as an exercise. */
 	for (int i = 0; i < 100; ++i) {
-		for (int a = 0; a < 1000000000; a++) {
-			for (int b = 0; b < 1000000000; b++) {
-				if (b % a == 3) {
-					
+		for (int d = 0; d < 1000000000; d++) {
+			for (int c = 0; c < 1000000000; c++) {
+				for (int a = 0; a < 1000000000; a++) {
+					for (int b = 0; b < 1000000000; b++) {
+						if (b % a == 3) {
+
+						}
+					}
 				}
 			}
 		}
