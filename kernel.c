@@ -128,5 +128,8 @@ void kernel_main(void) {
 	terminal_initialize();
  
 	/* Newline support is left as an exercise. */
-	terminal_writestring("Hello, kernel World!\n");
+	for (int i = 0; i < 1000000; ++i) {
+		if (i % 1000 == 0)
+			terminal_writestring("Hello, kernel World!\n");
+	}
 }
