@@ -126,13 +126,19 @@ extern "C" /* Use C linkage for kernel_main. */
 void kernel_main(void) {
 	/* Initialize terminal interface */
 	terminal_initialize();
+	char* out_string = "Test: 4";
  
 	/* Newline support is left as an exercise. */
-	for (int i = 0; i < 1000000; ++i) {
-		for (int a = 0; a < 1000000000; ++a) {}
-		for (int a = 0; a < 1000000000; ++a) {}
-		for (int a = 0; a < 1000000000; ++a) {}
-		if (i % 1000 == 0)
-			terminal_writestring("Hello, kernel World!\n");
+	for (int i = 0; i < 100; ++i) {
+		for (int a = 0; a < 1000000000; a++) {
+			for (int b = 0; b < 1000000000; b++) {
+				if (b % a == 3) {
+					
+				}
+			}
+		}
+		
+		out_string[6] = i % 10;
+		terminal_writestring(out_string);
 	}
 }
