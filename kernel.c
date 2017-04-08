@@ -62,7 +62,7 @@ uint16_t* terminal_buffer;
 void terminal_initialize(void) {
 	terminal_row = 0;
 	terminal_column = 0;
-	terminal_color = vga_entry_color(VGA_COLOR_LIGHT_GREY, VGA_COLOR_BLACK);
+	terminal_color = vga_entry_color(VGA_COLOR_GREEN, VGA_COLOR_BLACK);
 	terminal_buffer = (uint16_t*) 0xB8000;
 	for (size_t y = 0; y < VGA_HEIGHT; y++) {
 		for (size_t x = 0; x < VGA_WIDTH; x++) {
@@ -72,11 +72,11 @@ void terminal_initialize(void) {
 	}
 }
 
-void terminal_scroll_up() {
-	size_t y, x;
+void terminal_scroll_down() {
+	size_t y, x, index;
 	for (y = 1; y < VGA_HEIGHT - 1; y++) {
 		for (x = 0; x < VGA_WIDTH; x++) {
-			const size_t index = y * VGA_WIDTH + x;
+			index = y * VGA_WIDTH + x;
 			terminal_buffer[index - (y * VGA_WIDTH)] = terminal_buffer[index];
 		}
 	}
@@ -99,9 +99,9 @@ void terminal_putentryat(char c, uint8_t color, size_t x, size_t y) {
 void terminal_putchar(char c) {
 	if (c == '\n') { //Do not display '\n' code, simply increment row and reset column
 		terminal_column = 0;
-		++terminal_row;
-		if (terminal_row == VGA_HEIGHT)
-			terminal_scroll_up();
+		if (++terminal_row == VGA_HEIGHT)
+			--terminal_row;
+			terminal_scroll_down();
 		return;
 	}
 	
@@ -111,7 +111,7 @@ void terminal_putchar(char c) {
 		terminal_column = 0;
 		if (++terminal_row == VGA_HEIGHT)
 			--terminal_row;
-			terminal_scroll_up();
+			terminal_scroll_down();
 	}
 }
  
