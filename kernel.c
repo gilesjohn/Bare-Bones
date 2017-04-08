@@ -130,13 +130,15 @@ extern "C" /* Use C linkage for kernel_main. */
 void kernel_main(void) {
 	/* Initialize terminal interface */
 	terminal_initialize();
-	char* out_string = "Test: 04\n";
+	char* out_string = "Test: rr cc\n";
  
 	/* Newline support is left as an exercise. */
 	for (int i = 0; i < 100; ++i) {
 		
-		out_string[6] = i / 10 + 48;
-		out_string[7] = i % 10 + 48;
+		out_string[6] = terminal_row / 10 + 48;
+		out_string[7] = terminal_row % 10 + 48;
+		out_string[9] = terminal_column / 10 + 48;
+		out_string[10] = terminal_column % 10 + 48;
 		terminal_writestring(out_string);
 	}
 }
