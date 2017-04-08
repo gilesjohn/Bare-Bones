@@ -129,6 +129,9 @@ void kernel_main(void) {
  
 	/* Newline support is left as an exercise. */
 	for (int i = 0; i < 1000000; ++i) {
+		for (int a = 0; a < 1000000000; ++a) {}
+		for (int a = 0; a < 1000000000; ++a) {}
+		for (int a = 0; a < 1000000000; ++a) {}
 		if (i % 1000 == 0)
 			terminal_writestring("Hello, kernel World!\n");
 	}
