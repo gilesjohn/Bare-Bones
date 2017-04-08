@@ -2,3 +2,7 @@
 cd ../
 rm -rf Bare-Bones
 git clone https://github.com/gilesjohn/Bare-Bones.git
+cd Bare-Bones
+chmod +x clone
+chmod +x compile
+chmod +x run
